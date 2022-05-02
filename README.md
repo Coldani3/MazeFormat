@@ -1,4 +1,13 @@
-# Overall structure
+
+# Overall structure (introduced 2022/05/02)
+The maze file starts with one byte that represents the number of dimensions the maze has, this number of dimensions henceforth being referred to as `n`. The next `n` bytes represent the maze's sizes in each dimension, the `n` bytes after that represent the maze's entrance coordinates, and the `n` bytes after that represent the exit ones. Then, the rest of the data's formatting will depend on the dimensions. For less than or equal to 4 dimensions, each cell will be represented with a byte. For less than or equal to 8 dimensions and greater than 4 dimensions, it will be with a short. Generally speaking the data size in bytes follows the formula of `ceil(n / 4)`.
+
+## Cells
+Each maze cell details the directions available from that cell with bits, two for each axis. A bit set to one (1) will represent an available direction, or the wall being removed. The first of every pair of bits will always be the positive in that direction. The first two bits represent y, then the next two represent x, then z, then w, and so on. In other words, up, down, right, left, forward, backwards, ana and kata, or +y, -y, +x, -x, +z, -z, +w, -w. **TODO: make x first? then it's x,y,z,w]**.
+
+----------------------------------------------------------------------------------
+
+# Overall structure (old bad overengineered format)
 Each maze is composed of a set of 2D slices (though each cell can go in any direction outside of 2D), with each cell described in a flag, the size of which is determined by a number at the start of a file (e.g 8 for a byte, 16 for a short, 32 for an int, etc.), henceforth referred to as the cell size. After the flag data type determinator, at the top of the file, the overall size of the maze is described as follows: `{x,y,z,w,etc.}`, so for a 6D maze it would look like `{6,6,6,6,6,6}` - comma separated, no spaces.
 
 # Slices
