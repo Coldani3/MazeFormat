@@ -5,7 +5,7 @@ The maze file starts with one byte that represents the number of dimensions the 
 The maze's cell data takes the form of a one dimensional array of cells (the format of which will be described below), a position accessed with the formula `(height * width * depth * w) + (height * width * z) + (height * y) + x`. This means you can just put all of the data in this file directly into an array and not need to worry about formatting it.
 
 ## Cells
-Each maze cell details the directions available from that cell with bits, two for each axis. A bit set to one (1) will represent an available direction, or the wall being removed. The first of every pair of bits (first being the bit representing 1 in denary, or 00000001) will always be the positive in that direction. The first two bits represent y, then the next two represent x, then z, then w, and so on. In other words, up, down, right, left, forward, backwards, ana and kata, or +y, -y, +x, -x, +z, -z, +w, -w. **TODO: make x first? then it's x,y,z,w]**. So a cell of 0001 would represent a U shape cell in 2D.
+Each maze cell details the directions available from that cell with bits, two for each axis. A bit set to one (1) will represent an available direction, or the wall being removed. The first of every pair of bits (first being the bit representing 1 in denary, or 00000001) will always be the positive in that direction. The first two bits represent z, then the next two represent x, then y, then w, and so on. In other words, foward, backwards, right, left, up, down, ana and kata, or +z, -z, +x, -x, +y, -y, +w, -w. **TODO: make x first? then it's x,y,z,w]**. So a cell of 0001 would represent a U shape cell in 2D.
 
 ----------------------------------------------------------------------------------
 
